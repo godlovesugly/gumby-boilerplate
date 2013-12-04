@@ -6,6 +6,7 @@
         "grunt-contrib-uglify": "latest",
         "grunt-contrib-cssmin": "latest",
         "grunt-contrib-watch": "latest",
-        "grunt-contrib-compass": "latest"
+        "grunt-contrib-compass": "latest",
+        "grunt-notify": "latest"
     }
 }

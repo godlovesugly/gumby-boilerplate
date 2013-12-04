@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
@@ -8,16 +8,21 @@ module.exports = function(grunt) {
         watch: {
             compass: {
                 files: [
-                    'scss/*',
-                    'bower_components/normalize-css/normalize.css'
+                    'bower_components/gumby/sass/**/*.scss'
                 ],
                 tasks: ['compass']
             },
             css: {
                 files: [
-                    'css/*'
+                    'bower_components/gumby/css/gumby.css'
                 ],
-                tasks: ['cssmin']
+                tasks: ['cssmin', 'notify:sass']
+            },
+            js: {
+                files: [
+                    'js/*'
+                ],
+                tasks: ['uglify', 'notify:js']
             }
         },
 
@@ -27,11 +32,9 @@ module.exports = function(grunt) {
             },
             combinejs: {
                 files: {
-                    '<%= ghost_location %>content/themes/<%= ghost_theme_name %>/assets/js/all.min.js':
-                        [
-                            'bower_components/modernizr/modernizr.js',
-                            'custom_components/responsive_iframes/responsive_iframes.js'
-                        ]
+                    '<%= app_location %>/js/all.min.js': [
+                        'js/app.js'
+                    ]
                 }
             }
         },
@@ -39,8 +42,7 @@ module.exports = function(grunt) {
         compass: {
             dev: {
                 options: {
-                    sassDir: 'scss',
-                    cssDir: 'css'
+                    config: 'gumbyConfig.rb'
                 }
             }
         },
@@ -48,13 +50,29 @@ module.exports = function(grunt) {
         cssmin: {
             combine: {
                 files: {
-                    '<%= ghost_location %>content/themes/<%= ghost_theme_name %>/assets/css/style.css': ['bower_components/normalize-css/normalize.css', 'css/style.css']
+                    '<%= app_location %>/css/style.css': [
+                        'bower_components/gumby/css/gumby.css'
+                    ]
                 }
             }
         },
 
-        'ghost_location': '../Ghost/',
-        'ghost_theme_name': 'YourThemeName',
+        notify: {
+            sass: {
+                options: {
+                    title: "Task Complete",
+                    message: "Your Sass has been compiled and concatenated!"
+                }
+            },
+            js: {
+                options: {
+                    title: "Task Complete",
+                    message: "Your Javascript files has been minified and concatenated!"
+                }
+            }
+        },
+
+        'app_location': '../'
 
     });
 
@@ -63,5 +81,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-notify');
 
 };

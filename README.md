@@ -1,10 +1,9 @@
 gumby-boilerplate
 =================
 
-# Boilerplate for quickstarting a new webapp using the Gumby framework, Bower and Grunt.
-
-
 ### Documentation
+
+Boilerplate for quickstarting a new webapp using the Gumby framework, Bower and Grunt.
 
 ## GETTING STARTED
 
@@ -20,6 +19,7 @@ gumby-boilerplate
 2. From a console / terminal, cd to the root folder of the project
 3. Run `npm install`
 4. Run `bower install`
+5. In Gruntfile.js set values for `app_location`
 
 
 #### Terminal commands

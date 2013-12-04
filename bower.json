@@ -2,6 +2,7 @@
     "name": "gumby-boilerplate",
     "version": "1.0",
     "dependencies": {
+        "gumby": "latest",
         "normalize-css": "latest",
         "modernizr": "latest"
     }
