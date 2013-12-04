@@ -1,0 +1,8 @@
+{
+    "name": "gumby-boilerplate",
+    "version": "1.0",
+    "dependencies": {
+        "normalize-css": "latest",
+        "modernizr": "latest"
+    }
+}
